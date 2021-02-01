@@ -2,6 +2,7 @@ import express, {json, urlencoded} from 'express'
 import morgan from 'morgan'
 import helmet from 'helmet'
 import cors from 'cors'
+import authRouter from './routes/auth.routes'
 
 //intializations
 const app = express()
@@ -22,5 +23,8 @@ app.use(json())
 app.get('/', (req, res) => {
     res.send(`The API is at ${app.get('host')}:${app.get('port')}/api`)
 })
+
+app.use('/api', authRouter)
+
 
 export default app
